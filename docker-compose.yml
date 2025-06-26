@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  construction-analysis:
+    build: .
+    container_name: construction-analysis
+    volumes:
+      - ./sample:/app/sample
+      - ./output:/app/output
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+    command: >
+      python extract_all_pdfs.py
